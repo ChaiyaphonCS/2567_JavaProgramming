@@ -1,25 +1,31 @@
-import javax.swing.*;
-public class Lab203 {
+import javax.swing.JOptionPane;
 
+public class Lab203 {
+	
 	public static void main(String[] args) {
-		
-		double inputWeight = Double.parseDouble(JOptionPane.showInputDialog("Input Weight:"));
-		
-		double inputHeight = Double.parseDouble(JOptionPane.showInputDialog("Input Height:"));
-		
-		double bmi = inputWeight /(inputHeight * inputHeight);
-		
-		String information;
-		
+
+		String weightInput = JOptionPane.showInputDialog(null, "Input Weight:", "Input", JOptionPane.QUESTION_MESSAGE);
+		double weight = Double.parseDouble(weightInput);
+
+		String heightInput = JOptionPane.showInputDialog(null, "Input Height:", "Input", JOptionPane.QUESTION_MESSAGE);
+		double height = Double.parseDouble(heightInput) / 100;
+
+		double bmi = weight / (height * height);
+
+		String bmiCategory;
+
 		if (bmi < 18.5) {
-			information = "Underweight";
+			bmiCategory = "Underweight";
+		} else if (bmi < 25) {
+			bmiCategory = "Normal-weight";
+		} else if (bmi < 30) {
+			bmiCategory = "Overweight";
+		} else {
+			bmiCategory = "Obesity";
 		}
-		else if (bmi => 18.5 || bmi <= 24.9) {
-			information = "Normal=weight";
-		}
-		
-		JOptionPane.showConfirmDialog(null,"BMI = "+bmi);
-		
+
+		JOptionPane.showMessageDialog(null, "BMI = " + String.format("%.1f", bmi) + "\nYou're " + bmiCategory, "BMI",
+				JOptionPane.INFORMATION_MESSAGE);
 
 	}
 
