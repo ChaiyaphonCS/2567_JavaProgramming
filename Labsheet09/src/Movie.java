@@ -25,6 +25,6 @@ public void setDirector(Director director) {
 	this.director = director;
 }
 public String toString() {
-	return getId()+getName()+"direct by "+director.toString();
+	return String.format("%s %s direct by %s", this.getId(), this.getName(), this.getDirector());
 }
 }
